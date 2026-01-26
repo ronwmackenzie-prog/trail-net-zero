@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     question: "How much does membership cost?",
-    answer: "Membership is $25 per month, billed monthly through our secure LaunchPass/Stripe integration. You can cancel anytime.",
+    answer: "Membership is $15 per month, billed monthly through our secure Stripe integration. You can cancel anytime.",
   },
   {
     question: "Is there a free trial?",

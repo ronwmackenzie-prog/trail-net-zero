@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Check } from "lucide-react"
+import { createCheckoutSession } from "@/app/actions"
 
 const benefits = [
   "Access to all Slack channels and working groups",
@@ -36,7 +37,7 @@ export function JoinSection() {
             <div className="text-center">
               <p className="text-sm font-medium text-foreground/60">Community Membership</p>
               <div className="mt-4 flex items-baseline justify-center gap-1">
-                <span className="text-4xl font-bold text-foreground">$25</span>
+                <span className="text-4xl font-bold text-foreground">$15</span>
                 <span className="text-foreground/60">/month</span>
               </div>
               <p className="mt-2 text-sm text-foreground/60">Billed monthly. Cancel anytime.</p>
@@ -52,12 +53,12 @@ export function JoinSection() {
             </ul>
 
             <div className="mt-8 space-y-3">
-              <Button size="lg" className="w-full" asChild>
-                <Link href="https://launchpass.com" target="_blank" rel="noopener noreferrer">
-                  Join via LaunchPass
+              <form action={createCheckoutSession}>
+                <Button size="lg" className="w-full" type="submit">
+                  Join via Stripe
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+                </Button>
+              </form>
               <p className="text-center text-xs text-foreground/60">
                 Secure payment via Stripe. Access provisioned automatically.
               </p>

@@ -15,9 +15,6 @@ export function HeroSection() {
         <div className="grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
           {/* Content */}
           <div>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/5 px-4 py-1.5">
-              <span className="text-sm font-medium text-foreground">Professional Slack Community</span>
-            </div>
             
             <h1 className="text-balance text-3xl sm:text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl">
               Trail Running Meets <span className="text-primary">Net Zero</span>

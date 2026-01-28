@@ -9,32 +9,48 @@ export function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary">
-                <span className="text-sm font-bold text-primary-foreground">TN</span>
+                <span className="text-sm font-bold text-primary-foreground">
+                  TN
+                </span>
               </div>
-              <span className="text-lg font-semibold text-foreground">Trail Net Zero</span>
+              <span className="text-lg font-semibold text-foreground">
+                Trail Net Zero
+              </span>
             </div>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-foreground/70">
-              A professional community for trail running sustainability practitioners. 
-              Evidence-based decisions. Transparent collaboration. Real-world outcomes.
+              A professional community for trail running sustainability
+              practitioners. Evidence-based decisions. Transparent
+              collaboration. Real-world outcomes.
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Navigation</h3>
+            <h3 className="text-sm font-semibold text-foreground">
+              Navigation
+            </h3>
             <ul className="mt-4 space-y-3">
               <li>
-                <Link href="/" className="text-sm text-foreground/70 transition-colors hover:text-foreground">
+                <Link
+                  href="/"
+                  className="text-sm text-foreground/70 transition-colors hover:text-foreground"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/forum" className="text-sm text-foreground/70 transition-colors hover:text-foreground">
+                <Link
+                  href="/forum"
+                  className="text-sm text-foreground/70 transition-colors hover:text-foreground"
+                >
                   Forum
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-sm text-foreground/70 transition-colors hover:text-foreground">
+                <Link
+                  href="/contact"
+                  className="text-sm text-foreground/70 transition-colors hover:text-foreground"
+                >
                   Contact
                 </Link>
               </li>
@@ -46,17 +62,26 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-foreground">Community</h3>
             <ul className="mt-4 space-y-3">
               <li>
-                <Link href="/#join" className="text-sm text-foreground/70 transition-colors hover:text-foreground">
-                  Join Slack
+                <Link
+                  href="/#join"
+                  className="text-sm text-foreground/70 transition-colors hover:text-foreground"
+                >
+                  Join
                 </Link>
               </li>
               <li>
-                <Link href="/#how-it-works" className="text-sm text-foreground/70 transition-colors hover:text-foreground">
+                <Link
+                  href="/#how-it-works"
+                  className="text-sm text-foreground/70 transition-colors hover:text-foreground"
+                >
                   How It Works
                 </Link>
               </li>
               <li>
-                <Link href="/#who" className="text-sm text-foreground/70 transition-colors hover:text-foreground">
+                <Link
+                  href="/#who"
+                  className="text-sm text-foreground/70 transition-colors hover:text-foreground"
+                >
                   Who It{"'"}s For
                 </Link>
               </li>
@@ -69,15 +94,21 @@ export function Footer() {
             Trail Net Zero. Evidence over marketing. Action over claims.
           </p>
           <div className="flex gap-6">
-            <Link href="/contact" className="text-sm text-foreground/70 transition-colors hover:text-foreground">
+            <Link
+              href="/contact"
+              className="text-sm text-foreground/70 transition-colors hover:text-foreground"
+            >
               Privacy Policy
             </Link>
-            <Link href="/contact" className="text-sm text-foreground/70 transition-colors hover:text-foreground">
+            <Link
+              href="/contact"
+              className="text-sm text-foreground/70 transition-colors hover:text-foreground"
+            >
               Terms of Service
             </Link>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }

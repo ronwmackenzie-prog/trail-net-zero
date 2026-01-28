@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { HeroSection } from "@/components/home/hero-section"
@@ -5,6 +6,7 @@ import { PrinciplesSection } from "@/components/home/principles-section"
 import { AudienceSection } from "@/components/home/audience-section"
 import { HowItWorksSection } from "@/components/home/how-it-works-section"
 import { JoinSection } from "@/components/home/join-section"
+import { SuccessWrapper } from "@/components/home/success-wrapper"
 
 export default function HomePage() {
   return (
@@ -18,6 +20,9 @@ export default function HomePage() {
         <JoinSection />
       </main>
       <Footer />
+      <Suspense fallback={null}>
+        <SuccessWrapper />
+      </Suspense>
     </div>
   )
 }

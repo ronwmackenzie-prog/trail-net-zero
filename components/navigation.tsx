@@ -13,21 +13,46 @@ export function Navigation() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary">
-            <span className="text-sm font-bold text-primary-foreground">TN</span>
+            <span className="text-sm font-bold text-primary-foreground">
+              TN
+            </span>
           </div>
-          <span className="text-lg font-semibold text-foreground">Trail Net Zero</span>
+          <span className="text-lg font-semibold text-foreground">
+            Trail Net Zero
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-8 md:flex">
-          <Link href="/" className="text-sm font-medium text-foreground/70 transition-colors hover:text-foreground">
+          <Link
+            href="/"
+            className="text-sm font-medium text-foreground/70 transition-colors hover:text-foreground"
+          >
             Home
           </Link>
-          <Link href="/forum" className="text-sm font-medium text-foreground/70 transition-colors hover:text-foreground">
+          <Link
+            href="/forum"
+            className="text-sm font-medium text-foreground/70 transition-colors hover:text-foreground"
+          >
             Forum
           </Link>
-          <Link href="/contact" className="text-sm font-medium text-foreground/70 transition-colors hover:text-foreground">
+          <Link
+            href="/contact"
+            className="text-sm font-medium text-foreground/70 transition-colors hover:text-foreground"
+          >
             Contact
+          </Link>
+          <Link
+            href="/account"
+            className="text-sm font-medium text-foreground/70 transition-colors hover:text-foreground"
+          >
+            Account
+          </Link>
+          <Link
+            href="/auth/sign-in"
+            className="text-sm font-medium text-foreground/70 transition-colors hover:text-foreground"
+          >
+            Sign in
           </Link>
         </nav>
 
@@ -43,7 +68,11 @@ export function Navigation() {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {isMenuOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
         </button>
       </div>
 
@@ -72,6 +101,20 @@ export function Navigation() {
             >
               Contact
             </Link>
+            <Link
+              href="/account"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Account
+            </Link>
+            <Link
+              href="/auth/sign-in"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Sign in
+            </Link>
             <Button asChild className="w-full">
               <Link href="/#join" onClick={() => setIsMenuOpen(false)}>
                 Join Community
@@ -81,5 +124,5 @@ export function Navigation() {
         </div>
       )}
     </header>
-  )
+  );
 }

@@ -7,29 +7,35 @@ import { cn } from "@/lib/utils"
 const faqs = [
   {
     question: "Who is Trail Net Zero for?",
-    answer: "Trail Net Zero is designed for industry practitioners: trail race directors, apparel and footwear manufacturers, sports nutrition brands, sustainability consultants, LCA specialists, and land managers. It's intentionally not aimed at casual runners or the general public.",
+    answer:
+      "Trail Net Zero is designed for industry practitioners: trail race directors, apparel and footwear manufacturers, sports nutrition brands, sustainability consultants, LCA specialists, and land managers. It's intentionally not aimed at casual runners or the general public.",
   },
   {
     question: "What does membership include?",
-    answer: "Membership provides access to our Slack workspace (Trail Bites, Threads, and Treads), which includes organized channels for core topics, working groups, case studies, and direct connection with fellow practitioners. You also get participation in community governance and verified contributor recognition.",
+    answer:
+      "Membership provides access to our member community (Trail Bites, Threads, and Treads), which includes organized spaces for core topics, working groups, case studies, and direct connection with fellow practitioners. You also get participation in community governance and verified contributor recognition.",
   },
   {
     question: "How much does membership cost?",
-    answer: "Membership is $15 per month, billed monthly through our secure Stripe integration. You can cancel anytime.",
+    answer:
+      "Membership is $15 per month, billed monthly through our secure Stripe integration. You can cancel anytime.",
   },
   {
     question: "Is there a free trial?",
-    answer: "We don't offer a free trial, but you can cancel your membership at any time with no penalties. We want members who are committed to contributing to the community's mission.",
+    answer:
+      "We don't offer a free trial, but you can cancel your membership at any time with no penalties. We want members who are committed to contributing to the community's mission.",
   },
   {
     question: "How is the community moderated?",
-    answer: "We have clear community guidelines, a transparent moderation process, and published escalation procedures. Our focus is on maintaining evidence-based, professional discourse while preventing greenwashing and unsubstantiated claims.",
+    answer:
+      "We have clear community guidelines, a transparent moderation process, and published escalation procedures. Our focus is on maintaining evidence-based, professional discourse while preventing greenwashing and unsubstantiated claims.",
   },
   {
     question: "Can I join as an individual or just as a company?",
-    answer: "Both individuals and companies can join. Membership is tied to individuals, though many companies sponsor membership for their sustainability team members.",
+    answer:
+      "Both individuals and companies can join. Membership is tied to individuals, though many companies sponsor membership for their sustainability team members.",
   },
-]
+];
 
 export function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)

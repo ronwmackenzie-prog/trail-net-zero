@@ -11,12 +11,12 @@ const contactMethods = [
   },
   {
     icon: MessageSquare,
-    title: "Slack Help Desk",
-    description: "For existing members needing support",
-    action: "Available to members",
-    href: "/#join",
+    title: "Member Support",
+    description: "For existing members needing help",
+    action: "hello@trailnetzero.com",
+    href: "mailto:hello@trailnetzero.com?subject=Member%20Support",
   },
-]
+];
 
 const topics = [
   "Membership questions",
@@ -43,8 +43,12 @@ export function ContactInfo() {
             </div>
             <div>
               <h3 className="font-semibold text-foreground">{method.title}</h3>
-              <p className="mt-1 text-sm text-foreground/70">{method.description}</p>
-              <p className="mt-2 text-sm font-medium text-primary">{method.action}</p>
+              <p className="mt-1 text-sm text-foreground/70">
+                {method.description}
+              </p>
+              <p className="mt-2 text-sm font-medium text-primary">
+                {method.action}
+              </p>
             </div>
           </Link>
         ))}
@@ -57,8 +61,7 @@ export function ContactInfo() {
           <h3 className="font-semibold text-foreground">Response Time</h3>
         </div>
         <p className="mt-2 text-sm text-foreground/70">
-          We typically respond within 1-2 business days. For urgent membership issues, 
-          existing members can use the Slack help desk for faster support.
+          We typically respond within 1-2 business days.
         </p>
       </div>
 
@@ -66,11 +69,16 @@ export function ContactInfo() {
       <div className="rounded-xl border border-border bg-white p-5">
         <div className="flex items-center gap-3">
           <HelpCircle className="h-5 w-5 text-primary" />
-          <h3 className="font-semibold text-foreground">Topics We Can Help With</h3>
+          <h3 className="font-semibold text-foreground">
+            Topics We Can Help With
+          </h3>
         </div>
         <ul className="mt-4 grid grid-cols-2 gap-2">
           {topics.map((topic) => (
-            <li key={topic} className="flex items-center gap-2 text-sm text-foreground/70">
+            <li
+              key={topic}
+              className="flex items-center gap-2 text-sm text-foreground/70"
+            >
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               {topic}
             </li>
@@ -78,5 +86,5 @@ export function ContactInfo() {
         </ul>
       </div>
     </div>
-  )
+  );
 }

@@ -4,13 +4,13 @@ import { ArrowRight, Check } from "lucide-react"
 import { createCheckoutSession } from "@/app/actions"
 
 const benefits = [
-  "Access to all Slack channels and working groups",
+  "Access to member discussions and working groups",
   "Direct connection with industry practitioners",
   "Exclusive case studies and pilot documentation",
   "Verified contributor recognition",
   "Working group participation",
   "Community governance participation",
-]
+];
 
 export function JoinSection() {
   return (

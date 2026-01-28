@@ -18,12 +18,12 @@ const faqs = [
   {
     question: "How much does membership cost?",
     answer:
-      "Membership is $15 per month, billed monthly through our secure Stripe integration. You can cancel anytime.",
+      "Start with a 2-week free trial (no credit card required). After the trial, membership is $15 per month to continue, and you can cancel anytime.",
   },
   {
     question: "Is there a free trial?",
     answer:
-      "We don't offer a free trial, but you can cancel your membership at any time with no penalties. We want members who are committed to contributing to the community's mission.",
+      "Yes — every new account includes a 2-week free trial with full access, and no credit card required. After the trial, you can upgrade to $15/month to keep access.",
   },
   {
     question: "How is the community moderated?",

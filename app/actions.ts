@@ -63,7 +63,7 @@ export async function createBillingPortalSession() {
 
   if (error || !customer?.stripe_customer_id) {
     // If we can't find a customer, send them to join section.
-    redirect("/#join");
+    redirect("/join");
   }
 
   const portalSession = await stripe.billingPortal.sessions.create({

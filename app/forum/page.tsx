@@ -20,8 +20,8 @@ export default async function ForumPage() {
         <header className="space-y-2">
           <h1 className="text-3xl font-bold text-foreground">Member Forum</h1>
           <p className="text-sm text-foreground/70">
-            This forum is included with your $15/mo membership. Upgrade to read
-            and participate.
+            Your free trial may have ended, or your subscription isn&apos;t
+            active. Upgrade to continue participating for $15/month.
           </p>
         </header>
 

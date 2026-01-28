@@ -58,7 +58,7 @@ export function Navigation() {
 
         <div className="hidden md:block">
           <Button asChild>
-            <Link href="/#join">Join Community</Link>
+            <Link href="/join">Start free trial</Link>
           </Button>
         </div>
 
@@ -116,8 +116,8 @@ export function Navigation() {
               Sign in
             </Link>
             <Button asChild className="w-full">
-              <Link href="/#join" onClick={() => setIsMenuOpen(false)}>
-                Join Community
+              <Link href="/join" onClick={() => setIsMenuOpen(false)}>
+                Start free trial
               </Link>
             </Button>
           </nav>

@@ -33,15 +33,15 @@ export default function AboutPage() {
                     </p>
                   </div>
                 </div>
-                {/* Uncomment and update when image is available:
+                
                 <Image
-                  src="/ron-mackenzie.jpg"
+                  src="/Ron-cover-image.png"
                   alt="Ronald Wayne MacKenzie, Founder of Trail Bites, Threads, and Treads"
                   fill
                   className="object-cover"
                   priority
                 />
-                */}
+               
               </div>
 
               {/* Content */}

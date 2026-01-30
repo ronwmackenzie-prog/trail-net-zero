@@ -1,6 +1,5 @@
-import { openai } from '@ai-sdk/openai'
-import { streamText } from 'ai'
-import { createClient } from '@/lib/supabase/server'
+import { createClient } from "@/lib/supabase/server";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 
 // System prompt for the AI content helper
 const SYSTEM_PROMPT = `You are an expert content writer and editor for Trail Net Zero, a professional community focused on trail running sustainability. Your role is to help create high-quality content including:
@@ -36,54 +35,97 @@ When asked to create content, ask clarifying questions if needed about:
 - Tone preferences
 - Any specific facts or sources to reference
 
-Always format your output using Markdown for easy copy-paste into content management systems.`
+Always format your output using Markdown for easy copy-paste into content management systems.`;
+
+interface Message {
+  role: "user" | "assistant";
+  content: string;
+}
 
 export async function POST(req: Request) {
   try {
     // Verify admin access
-    const supabase = await createClient()
+    const supabase = await createClient();
     const {
       data: { user },
-    } = await supabase.auth.getUser()
+    } = await supabase.auth.getUser();
 
     if (!user) {
-      return new Response('Unauthorized', { status: 401 })
+      return new Response("Unauthorized", { status: 401 });
     }
 
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('is_admin')
-      .eq('id', user.id)
-      .single()
+    // Use admin client to bypass RLS when checking admin status
+    if (!supabaseAdmin) {
+      console.error("Supabase admin client not configured");
+      return new Response("Server configuration error", { status: 500 });
+    }
+
+    const { data: profile, error: profileError } = await supabaseAdmin
+      .from("profiles")
+      .select("is_admin")
+      .eq("id", user.id)
+      .single();
+
+    if (profileError) {
+      console.error("Error fetching profile:", profileError);
+      return new Response("Error checking admin status", { status: 500 });
+    }
 
     if (!profile?.is_admin) {
-      return new Response('Forbidden - Admin access required', { status: 403 })
+      return new Response("Forbidden - Admin access required", { status: 403 });
     }
 
-    const { messages, enableWebSearch = false } = await req.json()
+    const { messages, enableWebSearch = false } = await req.json();
 
-    // Build the model configuration
-    // GPT-5.2 has built-in web search capability that can be enabled via web_search_options
-    const result = streamText({
-      model: openai('gpt-5.2'),
-      system: SYSTEM_PROMPT,
-      messages,
-      // Enable web search if requested - GPT-5.2 has native web search support
-      ...(enableWebSearch && {
-        providerOptions: {
-          openai: {
-            webSearchOptions: {
-              enabled: true,
-            },
-          },
-        },
-      }),
-      maxTokens: 4096,
-    })
+    // Convert messages to OpenAI Responses API input format
+    const input = messages.map((msg: Message) => ({
+      role: msg.role,
+      content: msg.content,
+    }));
 
-    return result.toDataStreamResponse()
+    // Build the request body for OpenAI Responses API
+    const requestBody: Record<string, unknown> = {
+      model: "gpt-4.1",
+      instructions: SYSTEM_PROMPT,
+      input,
+      stream: true,
+      store: false,
+    };
+
+    // Enable web search if requested
+    if (enableWebSearch) {
+      requestBody.tools = [{ type: "web_search" }];
+    }
+
+    // Call OpenAI Responses API
+    const openaiResponse = await fetch("https://api.openai.com/v1/responses", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      },
+      body: JSON.stringify(requestBody),
+    });
+
+    if (!openaiResponse.ok) {
+      const errorText = await openaiResponse.text();
+      console.error("OpenAI API error:", openaiResponse.status, errorText);
+      return new Response(`OpenAI API error: ${openaiResponse.status}`, {
+        status: 500,
+      });
+    }
+
+    // Pass through the OpenAI SSE stream directly
+    // The client will parse the response.output_text.delta events
+    return new Response(openaiResponse.body, {
+      headers: {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
+      },
+    });
   } catch (error) {
-    console.error('Admin chat error:', error)
-    return new Response('Internal Server Error', { status: 500 })
+    console.error("Admin chat error:", error);
+    return new Response("Internal Server Error", { status: 500 });
   }
 }

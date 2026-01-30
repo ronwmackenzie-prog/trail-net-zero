@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
+import { Settings } from "lucide-react";
 
 export async function ForumSidebar({
   active,
@@ -8,9 +9,12 @@ export async function ForumSidebar({
   active:
     | "overview"
     | "resources"
+    | "admin"
     | "admin_flags"
     | "admin_resources"
-    | "admin_content";
+    | "admin_categories"
+    | "admin_content"
+    | "admin_threads";
   isAdmin: boolean;
 }) {
   const supabase = await createClient();
@@ -25,6 +29,8 @@ export async function ForumSidebar({
         ? "bg-primary/10 text-foreground"
         : "text-foreground/80 hover:bg-accent"
     }`;
+
+  const isAdminActive = active.startsWith("admin");
 
   return (
     <aside className="w-full shrink-0 rounded-2xl border border-border bg-card/60 p-5 shadow-sm md:w-72">
@@ -65,22 +71,15 @@ export async function ForumSidebar({
           </h3>
           <nav className="mt-3 space-y-1">
             <Link
-              href="/forum/admin/content"
-              className={itemClass("admin_content")}
+              href="/forum/admin"
+              className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition ${
+                isAdminActive
+                  ? "bg-primary/10 text-foreground font-medium"
+                  : "text-foreground/80 hover:bg-accent"
+              }`}
             >
-              <span>AI Content Helper</span>
-            </Link>
-            <Link
-              href="/forum/admin/resources"
-              className={itemClass("admin_resources")}
-            >
-              <span>Manage resources</span>
-            </Link>
-            <Link
-              href="/forum/admin/flags"
-              className={itemClass("admin_flags")}
-            >
-              <span>Reported posts</span>
+              <Settings className="h-4 w-4" />
+              <span>Admin Dashboard</span>
             </Link>
           </nav>
         </div>

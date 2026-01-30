@@ -18,15 +18,21 @@ export default async function AdminContentPage() {
       <p className="text-xs font-medium text-foreground/60">
         <Link className="hover:text-primary" href="/forum">
           Forum
-        </Link>{' '}
-        / Admin / AI Content Helper
+        </Link>{" "}
+        /{" "}
+        <Link className="hover:text-primary" href="/forum/admin">
+          Admin
+        </Link>{" "}
+        / AI Content Helper
       </p>
 
       <header className="space-y-2">
-        <h1 className="text-3xl font-bold text-foreground">AI Content Helper</h1>
+        <h1 className="text-3xl font-bold text-foreground">
+          AI Content Helper
+        </h1>
         <p className="text-sm text-foreground/70">
-          Generate articles, newsletters, blog posts, and more with AI assistance.
-          Toggle web search for up-to-date information.
+          Generate articles, newsletters, blog posts, and more with AI
+          assistance. Toggle web search for up-to-date information.
         </p>
       </header>
 
@@ -34,5 +40,5 @@ export default async function AdminContentPage() {
         <AIChat />
       </div>
     </section>
-  )
+  );
 }

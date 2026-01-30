@@ -1,6 +1,7 @@
 'use server'
 
 import { redirect } from 'next/navigation'
+import { revalidatePath } from "next/cache";
 import { stripe } from '@/lib/stripe'
 import { headers } from 'next/headers'
 import { createClient as createSupabaseServerClient } from "@/lib/supabase/server";
@@ -40,6 +41,38 @@ export async function createCheckoutSession() {
   if (session.url) {
     redirect(session.url)
   }
+}
+
+export async function signOut() {
+  const supabase = await createSupabaseServerClient();
+  await supabase.auth.signOut();
+  redirect("/");
+}
+
+export async function markWelcomeSeen() {
+  const supabase = await createSupabaseServerClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return { error: "Not authenticated" };
+  }
+
+  const { error } = await supabase
+    .from("profiles")
+    .update({ welcome_seen_at: new Date().toISOString() })
+    .eq("id", user.id);
+
+  if (error) {
+    console.error("Failed to mark welcome seen:", error);
+    return { error: error.message };
+  }
+
+  // Revalidate forum pages to ensure the welcome modal doesn't show again
+  revalidatePath("/forum", "layout");
+
+  return { success: true };
 }
 
 export async function createBillingPortalSession() {

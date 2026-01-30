@@ -25,8 +25,12 @@ export default async function ForumFlagsPage() {
       <p className="text-xs font-medium text-foreground/60">
         <Link className="hover:text-primary" href="/forum">
           Forum
-        </Link>{' '}
-        / Admin / Flags
+        </Link>{" "}
+        /{" "}
+        <Link className="hover:text-primary" href="/forum/admin">
+          Admin
+        </Link>{" "}
+        / Reported Posts
       </p>
 
       <header className="space-y-2">
@@ -38,15 +42,18 @@ export default async function ForumFlagsPage() {
 
       <div className="space-y-3">
         {(flags ?? []).map((f: any) => (
-          <div key={f.id} className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+          <div
+            key={f.id}
+            className="rounded-2xl border border-border bg-card p-5 shadow-sm"
+          >
             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
               <div className="space-y-1">
                 <p className="text-xs text-foreground/60">
-                  Reported by {String(f.user_id).slice(0, 8)} ·{' '}
+                  Reported by {String(f.user_id).slice(0, 8)} ·{" "}
                   {new Date(f.created_at).toLocaleString()}
                 </p>
                 <p className="text-sm font-semibold text-foreground">
-                  {f.post?.thread?.title ?? 'Thread'}
+                  {f.post?.thread?.title ?? "Thread"}
                 </p>
               </div>
               {f.post?.thread_id && (
@@ -59,7 +66,9 @@ export default async function ForumFlagsPage() {
               )}
             </div>
 
-            {f.reason && <p className="mt-3 text-sm text-foreground">Reason: {f.reason}</p>}
+            {f.reason && (
+              <p className="mt-3 text-sm text-foreground">Reason: {f.reason}</p>
+            )}
 
             {f.post?.body && (
               <p className="mt-3 line-clamp-4 whitespace-pre-wrap text-sm text-foreground/80">
@@ -76,6 +85,6 @@ export default async function ForumFlagsPage() {
         )}
       </div>
     </section>
-  )
+  );
 }
 

@@ -40,6 +40,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/about"
+                  className="text-sm text-foreground/70 transition-colors hover:text-foreground"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/forum"
                   className="text-sm text-foreground/70 transition-colors hover:text-foreground"
                 >

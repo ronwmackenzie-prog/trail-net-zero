@@ -4,15 +4,14 @@ import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import { Settings } from "lucide-react";
 
 type Category = { id: string; slug: string; name: string }
 
 function getActive(pathname: string) {
   if (pathname.startsWith('/forum/resources')) return 'resources'
   if (pathname.startsWith('/forum/threads')) return 'threads'
-  if (pathname.startsWith("/forum/admin/content")) return "admin_content";
-  if (pathname.startsWith('/forum/admin/resources')) return 'admin_resources'
-  if (pathname.startsWith('/forum/admin/flags')) return 'admin_flags'
+  if (pathname.startsWith("/forum/admin")) return "admin";
   return 'overview'
 }
 
@@ -80,22 +79,15 @@ export function ForumSidebarClient({ isAdmin }: { isAdmin: boolean }) {
           </h3>
           <nav className="mt-3 space-y-1">
             <Link
-              href="/forum/admin/content"
-              className={itemClass("admin_content")}
+              href="/forum/admin"
+              className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition ${
+                active === "admin"
+                  ? "bg-primary/10 text-foreground font-medium"
+                  : "text-foreground/80 hover:bg-accent"
+              }`}
             >
-              <span>AI Content Helper</span>
-            </Link>
-            <Link
-              href="/forum/admin/resources"
-              className={itemClass("admin_resources")}
-            >
-              <span>Manage resources</span>
-            </Link>
-            <Link
-              href="/forum/admin/flags"
-              className={itemClass("admin_flags")}
-            >
-              <span>Reported posts</span>
+              <Settings className="h-4 w-4" />
+              <span>Admin Dashboard</span>
             </Link>
           </nav>
         </div>

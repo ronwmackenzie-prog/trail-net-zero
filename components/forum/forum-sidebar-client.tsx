@@ -10,6 +10,7 @@ type Category = { id: string; slug: string; name: string }
 function getActive(pathname: string) {
   if (pathname.startsWith('/forum/resources')) return 'resources'
   if (pathname.startsWith('/forum/threads')) return 'threads'
+  if (pathname.startsWith("/forum/admin/content")) return "admin_content";
   if (pathname.startsWith('/forum/admin/resources')) return 'admin_resources'
   if (pathname.startsWith('/forum/admin/flags')) return 'admin_flags'
   return 'overview'
@@ -44,13 +45,13 @@ export function ForumSidebarClient({ isAdmin }: { isAdmin: boolean }) {
       </h2>
 
       <nav className="mt-4 space-y-1">
-        <Link href="/forum" className={itemClass('overview')}>
+        <Link href="/forum" className={itemClass("overview")}>
           <span>Overview</span>
         </Link>
-        <Link href="/forum/threads" className={itemClass('threads')}>
+        <Link href="/forum/threads" className={itemClass("threads")}>
           <span>Threads</span>
         </Link>
-        <Link href="/forum/resources" className={itemClass('resources')}>
+        <Link href="/forum/resources" className={itemClass("resources")}>
           <span>Resources</span>
         </Link>
       </nav>
@@ -78,16 +79,28 @@ export function ForumSidebarClient({ isAdmin }: { isAdmin: boolean }) {
             Admin
           </h3>
           <nav className="mt-3 space-y-1">
-            <Link href="/forum/admin/resources" className={itemClass('admin_resources')}>
+            <Link
+              href="/forum/admin/content"
+              className={itemClass("admin_content")}
+            >
+              <span>AI Content Helper</span>
+            </Link>
+            <Link
+              href="/forum/admin/resources"
+              className={itemClass("admin_resources")}
+            >
               <span>Manage resources</span>
             </Link>
-            <Link href="/forum/admin/flags" className={itemClass('admin_flags')}>
+            <Link
+              href="/forum/admin/flags"
+              className={itemClass("admin_flags")}
+            >
               <span>Reported posts</span>
             </Link>
           </nav>
         </div>
       )}
     </aside>
-  )
+  );
 }
 

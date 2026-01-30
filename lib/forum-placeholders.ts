@@ -136,4 +136,3 @@ export function getPlaceholderThreadsForForum(categories: { slug: string; name: 
 
   return all
 }
-

@@ -82,9 +82,6 @@ export function Navigation({ initialIsSignedIn }: NavigationProps = {}) {
         ) : isSignedIn ? (
           // Signed-in navigation
           <nav className="hidden items-center gap-6 md:flex">
-            <Link href="/" className={getNavItemClass("/")}>
-              Home
-            </Link>
             <Link href="/forum" className={getNavItemClass("/forum")}>
               Overview
             </Link>

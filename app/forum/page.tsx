@@ -5,6 +5,21 @@ import { Button } from "@/components/ui/button";
 import { getForumAccess } from "@/lib/forum";
 import { createClient } from "@/lib/supabase/server";
 import { getPlaceholderThreadsForForum } from "@/lib/forum-placeholders";
+import {
+  FileText,
+  Link as LinkIcon,
+  Bell,
+  Newspaper,
+  BookOpen,
+} from "lucide-react";
+
+const KIND_ICONS: Record<string, typeof FileText> = {
+  article: FileText,
+  link: LinkIcon,
+  update: Bell,
+  newsletter: Newspaper,
+  guide: BookOpen,
+};
 
 export const metadata = {
   title: "Forum | Trail Net Zero",
@@ -48,8 +63,15 @@ export default async function ForumPage() {
   const supabase = await createClient();
   const { data: categories } = await supabase
     .from("forum_categories")
-    .select("id, slug, name, description")
+    .select("id, slug, name")
     .order("position", { ascending: true });
+
+  const { data: recentResources } = await supabase
+    .from("member_resources")
+    .select("id, slug, title, kind, published_at, created_at")
+    .order("published_at", { ascending: false, nullsFirst: false })
+    .order("created_at", { ascending: false })
+    .limit(3);
 
   const { data: latestThreads } = await supabase
     .from("forum_threads")
@@ -84,26 +106,55 @@ export default async function ForumPage() {
         </Button>
       </header>
 
-      <div className="grid gap-4 md:grid-cols-2">
+      {/* Compact Categories */}
+      <div className="flex flex-wrap gap-2">
         {(categories ?? []).map((cat) => (
           <Link
             key={cat.id}
             href={`/forum/c/${cat.slug}`}
-            className="rounded-2xl border border-border bg-card p-5 shadow-sm transition hover:border-primary/40 hover:shadow-md"
+            className="rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition hover:border-primary/40 hover:bg-primary/5"
           >
-            <h2 className="text-base font-semibold text-foreground">
-              {cat.name}
-            </h2>
-            {cat.description && (
-              <p className="mt-2 text-sm text-foreground/70">
-                {cat.description}
-              </p>
-            )}
-            <p className="mt-4 text-xs font-medium text-primary">
-              View threads
-            </p>
+            {cat.name}
           </Link>
         ))}
+      </div>
+
+      {/* Resources Section */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg font-semibold text-foreground">Resources</h2>
+          <Button asChild variant="outline" size="sm">
+            <Link href="/forum/resources">View all</Link>
+          </Button>
+        </div>
+        {(recentResources ?? []).length > 0 ? (
+          <div className="grid gap-3 sm:grid-cols-3">
+            {(recentResources ?? []).map((r: any) => {
+              const Icon = KIND_ICONS[r.kind] ?? FileText;
+              return (
+                <Link
+                  key={r.id}
+                  href={`/forum/resources/${r.slug}`}
+                  className="rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:border-primary/40 hover:shadow-md"
+                >
+                  <div className="flex items-center gap-2 text-xs text-foreground/60">
+                    <Icon className="h-3.5 w-3.5" />
+                    {new Date(
+                      (r.published_at ?? r.created_at) as string,
+                    ).toLocaleDateString()}
+                  </div>
+                  <p className="mt-2 text-sm font-semibold text-foreground line-clamp-2">
+                    {r.title}
+                  </p>
+                </Link>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="rounded-2xl border border-border bg-card p-4 text-sm text-foreground/70">
+            No resources yet. Check back soon!
+          </div>
+        )}
       </div>
 
       <div className="space-y-4">

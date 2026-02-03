@@ -13,7 +13,7 @@ const faqs = [
   {
     question: "What does membership include?",
     answer:
-      "Membership provides access to our member community (Trail Bites, Threads, and Treads), which includes organized spaces for core topics, working groups, case studies, and direct connection with fellow practitioners. You also get participation in community governance and verified contributor recognition.",
+      "Membership provides access to the Trail Net Zero member forum, including organized spaces for core topics, working groups, case studies, and direct connection with fellow practitioners. You also get participation in community governance and verified contributor recognition.",
   },
   {
     question: "How much does membership cost?",

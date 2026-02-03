@@ -33,7 +33,7 @@ export function PrinciplesSection() {
             A Community Built on Integrity
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-foreground/75">
-            Trail Bites, Threads, and Treads is not a marketing channel. It{"'"}s a working forum for 
+            Trail Net Zero is not a marketing channel. It{"'"}s a working community for
             practitioners who want to move beyond claims and into real-world implementation.
           </p>
         </div>

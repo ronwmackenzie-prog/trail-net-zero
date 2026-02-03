@@ -56,6 +56,22 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/standards"
+                  className="text-sm text-foreground/70 transition-colors hover:text-foreground"
+                >
+                  Standards
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/roadmap"
+                  className="text-sm text-foreground/70 transition-colors hover:text-foreground"
+                >
+                  Roadmap
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/contact"
                   className="text-sm text-foreground/70 transition-colors hover:text-foreground"
                 >
@@ -103,13 +119,13 @@ export function Footer() {
           </p>
           <div className="flex gap-6">
             <Link
-              href="/contact"
+              href="/privacy"
               className="text-sm text-foreground/70 transition-colors hover:text-foreground"
             >
               Privacy Policy
             </Link>
             <Link
-              href="/contact"
+              href="/terms"
               className="text-sm text-foreground/70 transition-colors hover:text-foreground"
             >
               Terms of Service

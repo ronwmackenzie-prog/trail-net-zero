@@ -13,7 +13,7 @@ export function ForumHero() {
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg text-foreground/75">
             Explore ongoing discussions, working group updates, and shared learnings from the 
-            Trail Bites, Threads, and Treads community.
+            Trail Net Zero community.
           </p>
         </div>
       </div>

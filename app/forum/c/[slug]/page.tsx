@@ -99,8 +99,7 @@ export default async function CategoryPage({ params }: { params: { slug: string 
         {(threads ?? []).length === 0 && placeholders.length > 0 && (
           <div className="space-y-3">
             <div className="rounded-2xl border border-border bg-muted/40 p-4 text-sm text-foreground/70">
-              Example threads (placeholders). Create a real thread to replace
-              these.
+              Example threads (sample). Create a real thread to replace these.
             </div>
             {placeholders.map((t) => (
               <div
@@ -124,7 +123,7 @@ export default async function CategoryPage({ params }: { params: { slug: string 
                   {t.title}
                 </p>
                 <p className="mt-2 text-xs text-foreground/60">
-                  This is a placeholder to demonstrate structure.
+                  Sample thread to demonstrate structure.
                 </p>
               </div>
             ))}

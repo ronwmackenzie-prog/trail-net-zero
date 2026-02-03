@@ -61,7 +61,7 @@ export function WelcomeModal({ showWelcome }: WelcomeModalProps) {
       <DialogContent className="max-h-[90vh] max-w-2xl overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-xl">
-            Welcome to Trail Bites, Threads, and Treads
+            Welcome to Trail Net Zero
             <span role="img" aria-label="waving hand">👋</span>
           </DialogTitle>
           <DialogDescription className="sr-only">

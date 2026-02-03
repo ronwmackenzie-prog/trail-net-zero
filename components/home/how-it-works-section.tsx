@@ -15,7 +15,7 @@ const steps = [
     number: "03",
     title: "Get Access",
     description:
-      "Get access to Trail Bites, Threads, and Treads—our structured community space organized by topic.",
+      "Get access to the Trail Net Zero member forum—our structured community space organized by topic.",
   },
   {
     number: "04",

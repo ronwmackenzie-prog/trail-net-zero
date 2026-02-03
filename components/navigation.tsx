@@ -104,6 +104,12 @@ export function Navigation({ initialIsSignedIn }: NavigationProps = {}) {
             <Link href="/about" className={getNavItemClass("/about")}>
               About
             </Link>
+            <Link href="/standards" className={getNavItemClass("/standards")}>
+              Standards
+            </Link>
+            <Link href="/roadmap" className={getNavItemClass("/roadmap")}>
+              Roadmap
+            </Link>
             <Link href="/forum" className={getNavItemClass("/forum")}>
               Forum
             </Link>
@@ -209,6 +215,18 @@ export function Navigation({ initialIsSignedIn }: NavigationProps = {}) {
                   className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                 >
                   About
+                </Link>
+                <Link
+                  href="/standards"
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  Standards
+                </Link>
+                <Link
+                  href="/roadmap"
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  Roadmap
                 </Link>
                 <Link
                   href="/forum"

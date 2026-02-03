@@ -12,8 +12,8 @@ export function ContactHero() {
             Get in Touch
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg text-foreground/75">
-            Have questions about membership, partnerships, or how the community works? 
-            We{"'"}re here to help.
+            Trail Net Zero welcomes inquiries from practitioners, partners, and
+            organizations aligned with our mission.
           </p>
         </div>
       </div>

@@ -4,13 +4,12 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const geist = Geist({ subsets: ["latin"] });
+const geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: 'Trail Net Zero | Trail Running Sustainability Community',
   description: 'A professional community for trail running sustainability. Join practitioners working toward verifiable net-zero and regenerative outcomes in trail running.',
-  generator: 'v0.app',
   icons: {
     icon: [
       {
@@ -35,10 +34,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const jsonLdOrg = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Trail Net Zero",
+    url: "https://trailnetzero.com",
+    email: "info@trailnetzero.com",
+    logo: "https://trailnetzero.com/logo.png",
+  };
+
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
+      <body className={`${geist.className} ${geistMono.className} font-sans antialiased`}>
         {children}
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrg) }}
+        />
         <Analytics />
       </body>
     </html>

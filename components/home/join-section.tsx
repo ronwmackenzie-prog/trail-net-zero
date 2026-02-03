@@ -28,9 +28,9 @@ export function JoinSection() {
               Ready to Make a Real Impact?
             </h2>
             <p className="mt-4 leading-relaxed text-foreground/75">
-              Trail Bites, Threads, and Treads is designed as infrastructure—not
-              content. This community exists to support practitioners doing the
-              work, learning together, and making better decisions over time.
+              Trail Net Zero is designed as infrastructure—not content. This
+              community exists to support practitioners doing the work, learning
+              together, and making better decisions over time.
             </p>
             <p className="mt-4 leading-relaxed text-foreground/75">
               Membership provides access to a professional network of peers who
@@ -46,7 +46,7 @@ export function JoinSection() {
               </p>
               <div className="mt-4 flex flex-col items-center justify-center gap-1">
                 <span className="text-4xl font-bold text-foreground">
-                  2 weeks free
+                  14 days free
                 </span>
                 <span className="text-sm text-foreground/70">
                   No credit card required
@@ -69,7 +69,7 @@ export function JoinSection() {
             <div className="mt-8 space-y-3">
               <Button size="lg" className="w-full" asChild>
                 <Link href="/join">
-                  Start 2-week free trial
+                  Start 14-day free trial
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>

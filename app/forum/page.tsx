@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { createCheckoutSession } from "@/app/actions";
 import { Button } from "@/components/ui/button";
 import { getForumAccess } from "@/lib/forum";
@@ -29,6 +28,108 @@ export const metadata = {
 
 export default async function ForumPage() {
   const { user, hasAccess } = await getForumAccess();
+
+  // Public preview (audit request): allow visitors to understand the forum before sign-up.
+  if (!user) {
+    const previewCategories = [
+      { slug: "race-operations", name: "Race operations" },
+      { slug: "apparel-footwear", name: "Apparel & footwear" },
+      { slug: "sports-nutrition", name: "Sports nutrition" },
+      { slug: "land-stewardship", name: "Land stewardship" },
+      { slug: "data-standards", name: "Data & standards" },
+      { slug: "working-groups", name: "Working groups" },
+    ];
+
+    const previewThreads = getPlaceholderThreadsForForum(previewCategories)
+      .sort(
+        (a, b) =>
+          new Date(b.lastActivityAt).getTime() -
+          new Date(a.lastActivityAt).getTime(),
+      )
+      .slice(0, 6);
+
+    return (
+      <section className="flex flex-col gap-10">
+        <header className="space-y-3">
+          <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+            Forum preview
+          </p>
+          <h1 className="text-balance text-3xl font-bold text-foreground md:text-4xl">
+            A practitioner forum for trail running sustainability
+          </h1>
+          <p className="max-w-3xl text-sm leading-relaxed text-foreground/70">
+            Trail Net Zero is a professional sustainability community for trail
+            running. Members collaborate on pilots, share documentation, and
+            build systems that move the trail running ecosystem toward net-zero
+            outcomes over the next 15 years.
+          </p>
+
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Button asChild>
+              <Link href="/join">Start a 14-day free trial</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/auth/sign-in?redirect=/forum">
+                Sign in to view member content
+              </Link>
+            </Button>
+          </div>
+        </header>
+
+        <div className="space-y-4">
+          <h2 className="text-lg font-semibold text-foreground">
+            Topics you’ll find inside
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {previewCategories.map((cat) => (
+              <Link
+                key={cat.slug}
+                href="/join"
+                className="rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition hover:border-primary/40 hover:bg-primary/5"
+              >
+                {cat.name}
+              </Link>
+            ))}
+          </div>
+          <p className="text-sm text-foreground/70">
+            Want to understand how claims are evaluated? Read{" "}
+            <Link className="font-medium text-primary underline-offset-4 hover:underline" href="/standards">
+              Standards &amp; Evidence
+            </Link>{" "}
+            and{" "}
+            <Link className="font-medium text-primary underline-offset-4 hover:underline" href="/roadmap">
+              the 15-year Roadmap
+            </Link>
+            .
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="text-lg font-semibold text-foreground">
+            Example threads (preview)
+          </h2>
+          <div className="space-y-3">
+            {previewThreads.map((p) => (
+              <div
+                key={p.key}
+                className="rounded-2xl border border-dashed border-border bg-card px-5 py-4"
+              >
+                <p className="text-xs text-foreground/60">{p.categoryName}</p>
+                <p className="mt-1 text-base font-semibold text-foreground">
+                  {p.title}
+                </p>
+                <p className="mt-2 text-xs text-foreground/60">
+                  {p.meta} · {p.replies} replies ·{" "}
+                  {`Last activity: ${new Date(p.lastActivityAt).toLocaleString()}`}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   if (!hasAccess) {
     return (
       <section className="mx-auto flex max-w-3xl flex-col gap-6 py-6">
@@ -189,8 +290,7 @@ export default async function ForumPage() {
           {(latestThreads ?? []).length === 0 && (
             <>
               <div className="rounded-2xl border border-border bg-muted/40 p-4 text-sm text-foreground/70">
-                Example threads (placeholders). Create real threads to replace
-                these.
+                Example threads (sample). Create real threads to replace these.
               </div>
               {placeholderThreads.map((p) => (
                 <div

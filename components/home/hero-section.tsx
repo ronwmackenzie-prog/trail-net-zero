@@ -19,13 +19,21 @@ export function HeroSection() {
           {/* Content */}
           <div>
             <h1 className="text-balance text-3xl sm:text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl">
-              Trail Running Meets <span className="text-primary">Net Zero</span>
+              Trail Net Zero: practical, evidence-based sustainability for{" "}
+              <span className="text-primary">trail running</span>
             </h1>
 
             <p className="mt-6 max-w-lg text-base sm:text-lg leading-relaxed text-foreground/75">
-              Join the professional community where trail race directors,
-              brands, and sustainability practitioners collaborate on
-              evidence-based approaches to environmental impact.
+              Trail Net Zero is a professional sustainability community for
+              trail running. We bring together race directors, brands, land
+              stewards, and practitioners to reduce environmental impact across
+              trail running—from materials and nutrition to event operations and
+              infrastructure.
+            </p>
+            <p className="mt-4 max-w-lg text-base sm:text-lg leading-relaxed text-foreground/75">
+              Members collaborate on pilots, share documentation, and build
+              systems that move the trail running ecosystem toward net-zero
+              outcomes over the next 15 years.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:gap-4 sm:flex-row">
@@ -49,26 +57,26 @@ export function HeroSection() {
             <div className="mt-12 grid grid-cols-3 gap-6 sm:gap-8">
               <div>
                 <p className="text-2xl sm:text-3xl font-bold text-foreground">
-                  250+
+                  15-year
                 </p>
                 <p className="mt-1 text-xs sm:text-sm text-foreground/60">
-                  Practitioners
+                  Roadmap
                 </p>
               </div>
               <div>
                 <p className="text-2xl sm:text-3xl font-bold text-foreground">
-                  40+
+                  14-day
                 </p>
                 <p className="mt-1 text-xs sm:text-sm text-foreground/60">
-                  Active Channels
+                  Free trial
                 </p>
               </div>
               <div>
                 <p className="text-2xl sm:text-3xl font-bold text-foreground">
-                  100%
+                  Evidence
                 </p>
                 <p className="mt-1 text-xs sm:text-sm text-foreground/60">
-                  Evidence-Based
+                  first
                 </p>
               </div>
             </div>

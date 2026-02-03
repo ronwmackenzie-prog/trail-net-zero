@@ -117,7 +117,7 @@ export default async function ThreadsPage({
         {(threads ?? []).length === 0 && sortedPlaceholders.length > 0 && (
           <div className="space-y-3">
             <div className="rounded-2xl border border-border bg-muted/40 p-4 text-sm text-foreground/70">
-              Example threads (placeholders). Create real threads to replace these.
+              Example threads (sample). Create real threads to replace these.
             </div>
             {sortedPlaceholders.map((p) => (
               <div

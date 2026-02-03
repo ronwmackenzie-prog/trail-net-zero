@@ -34,12 +34,19 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser()
 
   const isForumPath = request.nextUrl.pathname.startsWith('/forum')
+  const isForumLanding = request.nextUrl.pathname === '/forum'
 
   if (!isForumPath) {
     return response
   }
 
-  // Require authentication for the forum, but allow both trial and subscribed
+  // Allow a public preview on the forum landing page.
+  // Deeper forum routes remain members-only.
+  if (!user && isForumLanding) {
+    return response
+  }
+
+  // Require authentication for member-only forum routes.
   if (!user) {
     const redirectUrl = new URL('/auth/sign-in', request.url)
     redirectUrl.searchParams.set('redirect', '/forum')

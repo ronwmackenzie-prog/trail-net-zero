@@ -5,26 +5,24 @@ const contactMethods = [
   {
     icon: Mail,
     title: "Email Us",
-    description: "For general inquiries and support",
-    action: "hello@trailnetzero.com",
-    href: "mailto:hello@trailnetzero.com",
+    description: "For general inquiries and collaboration",
+    action: "info@trailnetzero.com",
+    href: "mailto:info@trailnetzero.com",
   },
   {
     icon: MessageSquare,
     title: "Member Support",
     description: "For existing members needing help",
-    action: "hello@trailnetzero.com",
-    href: "mailto:hello@trailnetzero.com?subject=Member%20Support",
+    action: "info@trailnetzero.com",
+    href: "mailto:info@trailnetzero.com?subject=Member%20Support",
   },
 ];
 
 const topics = [
-  "Membership questions",
-  "Partnership opportunities",
-  "Press and media inquiries",
-  "Technical support",
-  "Community guidelines",
-  "Billing and payments",
+  "Learn whether the community is a fit",
+  "Explore partnerships or pilots",
+  "Ask questions about standards and evidence",
+  "Discuss long-term collaboration",
 ]
 
 export function ContactInfo() {
@@ -61,7 +59,7 @@ export function ContactInfo() {
           <h3 className="font-semibold text-foreground">Response Time</h3>
         </div>
         <p className="mt-2 text-sm text-foreground/70">
-          We typically respond within 1-2 business days.
+          We typically respond within 1–2 business days.
         </p>
       </div>
 

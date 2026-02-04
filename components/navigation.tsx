@@ -63,15 +63,17 @@ export function Navigation({ initialIsSignedIn }: NavigationProps = {}) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2.5">
           <Image
             src="/logo.png"
             alt="Trail Net Zero Logo"
             width={48}
             height={48}
-            className="h-20 w-20 md:h-16 md:w-16 object-contain"
+            className="h-9 w-9 md:h-10 md:w-10 shrink-0 object-contain object-[center_60%]"
           />
-          <span className="text-lg font-semibold text-foreground md:text-base">Trail Net Zero</span>
+          <span className="text-sm font-semibold leading-none tracking-tight text-foreground">
+            Trail Net Zero
+          </span>
         </Link>
 
         {isSignedIn ? (

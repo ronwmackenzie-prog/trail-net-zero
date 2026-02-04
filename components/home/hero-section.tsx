@@ -15,9 +15,9 @@ export function HeroSection() {
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 md:py-32 lg:py-40">
-        <div className="grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
+        <div className="grid items-center gap-8 lg:items-start lg:gap-12 lg:grid-cols-2">
           {/* Content */}
-          <div>
+          <div className="lg:pt-2">
             <h1 className="text-balance text-3xl sm:text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl">
               Trail Net Zero: practical, evidence-based sustainability for{" "}
               <span className="text-primary">trail running</span>
@@ -29,11 +29,6 @@ export function HeroSection() {
               stewards, and practitioners to reduce environmental impact across
               trail running—from materials and nutrition to event operations and
               infrastructure.
-            </p>
-            <p className="mt-4 max-w-lg text-base sm:text-lg leading-relaxed text-foreground/75">
-              Members collaborate on pilots, share documentation, and build
-              systems that move the trail running ecosystem toward net-zero
-              outcomes over the next 15 years.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:gap-4 sm:flex-row">
@@ -83,7 +78,7 @@ export function HeroSection() {
           </div>
 
           {/* Visual Element */}
-          <div className="relative hidden lg:block">
+          <div className="relative hidden lg:block lg:self-start lg:mt-4">
             <div className="absolute -top-4 -right-4 h-full w-full rounded-2xl bg-primary/20" />
             <div className="relative grid grid-cols-2 gap-3 sm:gap-4 rounded-2xl bg-white p-4 sm:p-6 shadow-xl">
               <div className="flex flex-col items-center justify-center gap-3 rounded-xl bg-muted p-4 sm:p-6">

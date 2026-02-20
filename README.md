@@ -1,30 +1,70 @@
-# Trail Net Zero website
+# Trail Net Zero
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+A professional community website for trail running sustainability. Join practitioners working toward verifiable net-zero and regenerative outcomes in trail running.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/cnye36s-projects/v0-rons-trailbites-website)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/lMSpWryfSpp)
+## Tech Stack
 
-## Overview
+- **Framework:** Next.js 16 (App Router)
+- **Styling:** Tailwind CSS
+- **Database & Auth:** Supabase
+- **Payments:** Stripe
+- **Deployment:** Vercel (link your repo to create a project)
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+## Getting Started
 
-## Deployment
+### Prerequisites
 
-Your project is live at:
+- Node.js 18+
+- npm or pnpm
 
-**[https://vercel.com/cnye36s-projects/v0-rons-trailbites-website](https://vercel.com/cnye36s-projects/v0-rons-trailbites-website)**
+### Installation
 
-## Build your app
+```bash
+npm install
+```
 
-Continue building your app on:
+### Environment Variables
 
-**[https://v0.app/chat/lMSpWryfSpp](https://v0.app/chat/lMSpWryfSpp)**
+Copy the example env file and fill in your values:
 
-## How It Works
+```bash
+cp env.example .env
+```
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+Required variables:
+
+- **Stripe:** `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `STRIPE_PRICE_ID`
+- **Supabase:** `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY`, `SUPABASE_SERVICE_ROLE_KEY`
+- **OpenAI (optional):** `OPENAI_API_KEY`
+
+### Development
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+### Build
+
+```bash
+npm run build
+npm start
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+- **Home:** Hero, principles, audience, how it works, join CTA
+- **Forum:** Categories, threads, resources, admin (content, categories, flags, threads)
+- **Auth:** Sign in, sign up, account
+- **Pages:** About, contact, join, standards, roadmap, terms, privacy
+
+## License
+
+Private.

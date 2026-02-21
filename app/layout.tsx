@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   description: 'A professional community for trail running sustainability. Join practitioners working toward verifiable net-zero and regenerative outcomes in trail running.',
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: 'any' },
       {
         url: '/icon-light-32x32.png',
         media: '(prefers-color-scheme: light)',
